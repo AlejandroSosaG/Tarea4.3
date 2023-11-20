@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "464933684547",
+    "firebase_url": "https://contactos-32512-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "contactos-32512",
+    "storage_bucket": "contactos-32512.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464933684547:android:dfb79cab6f25ee94bd9bf6",
+        "android_client_info": {
+          "package_name": "com.example.ejemplorv"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQXVaN3C2WTbpOitKy4M5mRpZhpiIEoMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:464933684547:android:adda4c556ee07890bd9bf6",
+        "android_client_info": {
+          "package_name": "com.example.tarea4_3"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQXVaN3C2WTbpOitKy4M5mRpZhpiIEoMo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
