@@ -12,6 +12,9 @@ import com.example.tarea4_3.databinding.ItemContactoBinding
 class ContactosAdapter(private val contactos: List<Contacto>,
                        private val contactoPulsadoListener : ContactoPulsadoListener
 ) : RecyclerView.Adapter<ContactosAdapter.ViewHolder>() {
+    /**
+     * La clase viewHolder se encarga de mostrar la información de cada contacto.
+     */
     class ViewHolder(private val binding : ItemContactoBinding) : RecyclerView.ViewHolder(binding.root){
         var completo = false
         fun bind (contacto:Contacto){
@@ -42,12 +45,23 @@ class ContactosAdapter(private val contactos: List<Contacto>,
             })
         }
     }
+
+    /**
+     * Función que se encarga de crear la vista.
+     */
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val binding = ItemContactoBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return ViewHolder(binding)
     }
+
+    /**
+     * Esta función obtiene la cantidad de contactos que tiene la lista.
+     */
     override fun getItemCount(): Int = contactos.size
 
+    /**
+     * La siguiente función utiliza una transición cuando se pulsa la imagen del contacto, y accede al modo llamada cuando se pulsa sobre el número de teléfono.
+     */
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val transition = TransitionInflater.from(holder.itemView.context).inflateTransition(android.R.transition.fade)
 

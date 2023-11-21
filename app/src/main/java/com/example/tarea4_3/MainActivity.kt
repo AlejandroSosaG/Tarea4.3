@@ -19,11 +19,14 @@ import com.google.firebase.database.getValue
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        // Inicializamos la base de datos.
         FirebaseApp.initializeApp(this)
         var toast = Toast.makeText(this, "", Toast.LENGTH_LONG)
         val contactos = ContactosBinding.inflate(layoutInflater)
         setContentView(contactos.root)
+        // Instanciamos la base de datos.
         val db = FirebaseDatabase.getInstance().getReference("Contactos")
+        // Creamos una lista de Contactos que subiremos a la base de datos.
         val lista = listOf(
             Contacto("1","Alejandro Sosa García", "123456789", "Hombre"),
             Contacto("2","Angel Navarro Mesas", "987654321", "Hombre"),
@@ -40,9 +43,11 @@ class MainActivity : AppCompatActivity() {
             Contacto("13","Britany Sanchez Ballón", "987654321", "Mujer"),
             Contacto("14","Yeray Jimenez", "666666666", "Hombre"),
             Contacto("15","Juan Manuel Sánchez Moreno", "123456789", "Hombre"))
+        // Subimos cada Contacto de la lista a la base de datos.
         for (contacto in lista){
             db.child(contacto.id).setValue(contacto)
         }
+        // Utilizamos el adaptador para acceder al modo llamada del móvil cuando se pulsa sobre el número de teléfono.
         contactos.VistaContactos.adapter = ContactosAdapter(lista, object :
             ContactoPulsadoListener {
             override fun contactoPulsado(contacto: Contacto) {
@@ -53,8 +58,13 @@ class MainActivity : AppCompatActivity() {
                 startActivity(dial)
             }
         })
+        /**
+         * Añadimos un pulsador sobre cada contacto donde creamos dos funciones.
+         */
         db.addValueEventListener(object: ValueEventListener {
-
+            /**
+             * Función utilizada para leer o actualizar la base de datos.
+             */
             override fun onDataChange(snapshot: DataSnapshot) {
                 // This method is called once with the initial value and again
                 // whenever data at this location is updated.
@@ -62,6 +72,9 @@ class MainActivity : AppCompatActivity() {
                 Log.d(TAG, "Value is: $value")
             }
 
+            /**
+             * Esta función se encarga de mandar un mensaje diciendo que ha ocurrido un error al leer la base de datos.
+             */
             override fun onCancelled(error: DatabaseError) {
                 toast.setText("Error al leer la base de datos")
                 toast.show()
